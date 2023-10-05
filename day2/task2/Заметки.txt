@@ -1,0 +1,90 @@
+# join – объединяет через разделитель набор строк
+# words_list = ['one','two','three']
+# print('|'.join(words_list))
+
+# split – это обратная функция для join, разбивает строку на последовательность:
+# path = '/usr/local/bin'
+# path.split('/')
+
+# ord возвращает для указанного Юникод-символа целое, представляющее его позицию кода.
+# print(ord('a'))
+# print(chr(ord('a')))
+
+# Логические False:
+# 0, 0.0, 0j, Decimal(0), Fraction(0, 1)
+# '', (), [], {}, set(), range(0)
+# value = [[]]
+# if value:
+#     print("value return True".format(value))
+# else:
+#     print("value return False".format(value))
+
+# None
+#print(type(None)) # Показывает класс
+
+# Проверка на вхождение
+# list1 = 'spam'
+# if 'spam' in list1:
+#     print('True')
+# else:
+#     print('False')
+
+# Итерация
+# list1 = ['spam', 'drums', 100, 'action']
+# for lst in list1:
+#     print(lst)
+
+# Итерация с индексом
+# lst1.append("new_value")
+# lst1.extend(['value_from_another_list_1', 'value_2'])lst1
+# lst1 = print(['value'])
+# lst1 = "value"
+# for idx, lst in enumerate(lst1):
+#     print('# {} {}'.format(idx, lst))
+
+# Множества
+# Позволяют хранить в неупорядочном виде набор уникальных данных
+# empty_set  = set()
+# number_set = {1, 2, 3, 4, 5, 42, 42, 42, 42}
+# print(number_set)
+
+# Сортировка
+# import random
+# numbers = []
+# for _ in range(10):
+#     numbers.append(random.randint(1,20))
+# print(numbers)
+# print(sorted(numbers, reverse = True))
+# print(numbers)
+# print(numbers.sort(reverse = True))
+# print(numbers)
+
+# Перегруженные операции множеств
+# set() - выводит не повторяющиеся элементы в случайном порядке.
+# odd_set  = set()
+# even_set = set()
+# for number in range(10):
+#     if number % 2:
+#         odd_set.add(number)
+#     else:
+#         even_set.add(number)
+# print(odd_set)
+# print(even_set)
+
+# объединение
+# union_set = odd_set | even_set
+# union_set = odd_set.union(even_set)
+#
+# print(union_set) # {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+# пересечение
+# intersection_set = odd_set & even_set
+# intersection_set = odd_set.intersection(even_set)
+#
+# print(intersection_set)
+
+# Разность
+# difference_set = odd_set - even_set
+# difference_set = odd_set.difference(even_set)
+#
+# print(difference_set)
