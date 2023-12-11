@@ -1,0 +1,22 @@
+mud.name=Детектор обновлений модов
+message.checking=Проверка обновлений модов.
+message.check.done=Проверка завершена
+message.you.have.outdated=У вас есть %s устаревших модов
+message.type.to.view=Используйте команду для просмотра устаревших модов
+message.up.to.date=Все моды актуальные
+
+button.download.latest=Скачать последнюю версию
+gui.downloading=Загрузка
+mud.disable=Отключить MUD
+button.ok=Хорошо
+button.url=Открыть веб-страницу мода
+gui.download.complete=Скачать успешно
+gui.download.failed=Загрузка не удалась
+gui.restart=Пожалуйста, перезапустите Майнкрафт
+gui.md5.fail=Поврежденная или недействительная загрузка.
+log.message.none=Журнал изменений не предоставлен
+log.message.loading=Загрузка журнала изменений с сервера
+log.message.fail=Не удалось загрузить журнал изменений.
+mud.version.out=Устаревшая версия
+mud.version.latest=Последняя версия
+
