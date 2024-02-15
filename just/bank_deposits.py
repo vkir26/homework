@@ -1,42 +1,53 @@
 # Программа делает расчёт суммы начисленных процентов с минимального остатка и ежедневного остатка
 # Инструкция которой пользовался: https://www.mtsbank.ru/articles/kak-rasschitat-protsenty-po-vkladu/
 # % годовых - это процент от суммы вклада, который банк начисляет клиенту раз в год, квартал или месяц
+#     daily = "Ежедневный остаток"
+#     minimum = "Минимальный остаток"
 import math
+from enum import Enum
 
 
-daily = "Ежедневный остаток"
-minimum = "Минимальный остаток"
+class ContributionStatus(Enum):
+    minimum = 1
+    daily = 2
+    not_found = "Значение не найдено"
+    not_number = "Значение должно быть указано числом"
 
 
-def calculation_balance(on, d: int, i: float, t: int, y: int) -> str:
-    percent = i / 100
-    income = 0
+def calculation_balance(status: int, deposit: int, bet: float, term: int, year: int) -> str:
+    try:
+        # Минимальный остаток
+        if status == ContributionStatus.minimum.value:
+            income = math.ceil(deposit * (bet / 100) * term / year)
 
-    # Минимальный остаток
-    if on == minimum:
-        income = math.ceil(d * percent * t / y)
+        # Ежедневный остаток
+        elif status == ContributionStatus.daily.value:
+            income = math.floor(deposit * math.pow(1 + (bet / 100) / year, term) - deposit)
 
-    # Ежедневный остаток
-    elif on == daily:
-        income = math.floor(d * math.pow(1 + percent / y, t) - d)
-    return f"Доход: {income}\nОбщий доход: {d + income}"
+        else:
+            return f"{ContributionStatus.not_found.value}"
+
+        return f"Доход: {income}\nОбщий доход: {deposit + income}"
+
+    except TypeError:
+        return f"{ContributionStatus.not_number.value}"
 
 
 if __name__ == "__main__":
-    button = input(f"Что необходимо сделать?\n1. Рассчитать '{daily}'\n2. Рассчитать '{minimum}'\nВыберете цифрой: ")
-
     try:
-        if int(button) == 1 or int(button) == 2:
-            deposit_amount = int(input("Укажите начальную сумма вклада: "))  # ― начальная сумма вклада, пример: 50000
-            interest_rate = float(input("Укажите процентную ставку: "))  # ― процентная ставка, пример: 6.8
-            term = int(input("Укажите срок вклада в днях: "))  # ― срок вклада в днях, пример: 30
-            year = int(input("Укажите количество дней в году: "))  # ― количество дней в году (Банк), пример: 365
+        button = int(input(f"Что необходимо сделать?"
+                           f"\n1. Рассчитать 'Минимальный остаток'"
+                           f"\n2. Рассчитать 'Ежедневный остаток'"
+                           f"\nВыберете цифрой: "))
 
-            if int(button) == 1:
-                print(calculation_balance(daily, deposit_amount, interest_rate, term, year))
-            elif int(button) == 2:
-                print(calculation_balance(minimum, deposit_amount, interest_rate, term, year))
+        if button in [i.value for i in ContributionStatus]:
+            print(calculation_balance(button,
+                                      int(input("Укажите начальную сумма вклада: ")),  # ― пример: 50000
+                                      float(input("Укажите процентную ставку: ")),  # ― пример: 6.8
+                                      int(input("Укажите срок вклада в днях: ")),  # ― пример: 30
+                                      int(input("Укажите количество дней в году: "))))  # ― пример: 365
         else:
-            print(f"Не найдено: {button}, укажите цифрой что необходимо сделать")
+            print(ContributionStatus.not_found.value)
+
     except ValueError:
-        print("Значение должно быть указано числом")
+        print(ContributionStatus.not_number.value)
