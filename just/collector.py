@@ -1,69 +1,16 @@
 # Помогает собрать тесты из сайта https://pythontutor.ru/, которые будут использоваться в написании своих тестов
-text = """1
-1
-1
-4
-NO
-1
-1
-8
-8
-NO
-2
-4
-3
-2
-YES
-5
-2
-4
-4
-YES
-2
-8
-3
-7
-NO
-2
-8
-3
-5
-NO
-5
-5
-3
-7
-NO
-2
-4
-2
-5
-NO
-4
-7
-6
-6
-YES
-4
-5
-2
-4
-YES
-2
-3
-3
-2
-NO
-5
-1
-4
-3
-YES
-6
-2
-8
-3
-YES"""
+text = """Hi
+iH
+Hello
+loHel
+Qwerty
+rtyQwe
+Z
+Z
+asdfghj
+ghjasdf
+asdfghjzxc
+hjzxcasdfg"""
 
 
 def collector_func(n):
@@ -77,7 +24,27 @@ def collector_func(n):
             print(f"({', '.join(text_list[i:i + n])}),")
 
 
-collector_func(int(input("Диапазон чисел до ")))
+if __name__ == "__main__":
+    try:
+        collector_func(int(input("Диапазон чисел до ")))
+    except ValueError:
+        print("Диапазон не может быть равен '0'")
+
+# def collector_func(number):
+#     if 'YES' in text or 'NO' in text:
+#         text_breakdown = text.replace('\n', '').replace('NO', 'NO\n').replace('YES', 'YES\n')
+#         for i in text_breakdown.strip().split('\n'):
+#             print(f"({', '.join(i[:number])}, '{i[number:]}'),")
+#     else:
+#         text_list = list(text.split('\n'))
+#         print(text_list)
+#
+#
+# if __name__ == "__main__":
+#     try:
+#         collector_func(int(input("Диапазон чисел до ")))
+#     except ValueError:
+#         print("Диапазон не может быть равен '0'")
 
 # Необходимо чтобы программа читала текст, а затем в зависимости от указанного значения, выводила всё до этого значения,
 # например: 012345678901234, значение = 5, вывод: (0, 1, 2, 3, 4), (5, 6, 7, 8, 9)
